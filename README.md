@@ -13,3 +13,5 @@ The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
 ### Screenshots
+
+![Js Quiz App](/public/screenshots/js_quiz_app_ss.png)
