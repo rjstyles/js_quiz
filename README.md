@@ -14,4 +14,4 @@ You will also see any lint errors in the console.
 
 ### Screenshots
 
-![Js Quiz App](./public/screenshots/js_quiz_app_ss.png =250x)
+<img src="./public/screenshots/js_quiz_app_ss.png" alt="drawing" width="300"/>
