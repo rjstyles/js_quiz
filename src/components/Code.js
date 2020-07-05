@@ -6,11 +6,13 @@ import "highlight.js/styles/monokai.css";
 export default function Code({ code }) {
 	hljs.registerLanguage("javascript", javascript);
 	return (
-		<pre
-			className="code"
-			dangerouslySetInnerHTML={{
-				__html: hljs.highlight("javascript", code).value,
-			}}
-		></pre>
+		<div className="code-div">
+			<pre
+				className="code"
+				dangerouslySetInnerHTML={{
+					__html: hljs.highlight("javascript", code).value,
+				}}
+			></pre>
+		</div>
 	);
 }
