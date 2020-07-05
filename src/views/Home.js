@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 //scripts
-import api from "../scripts/data";
+import getData from "../scripts/data";
 
 //components
 import Question from "../components/Question";
@@ -24,7 +24,7 @@ export default function Home() {
 
 	useEffect(() => {
 		async function foo() {
-			const quizData = await api.getData();
+			const quizData = await getData();
 			setData(quizData);
 			setLoading(false);
 		}
