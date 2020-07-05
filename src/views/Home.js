@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-//config
-import config from "../config";
+//scripts
+import api from "../scripts/data";
 
 //components
 import Question from "../components/Question";
@@ -10,25 +10,26 @@ import Options from "../components/Options";
 import Submit from "../components/Submit";
 import Error from "../components/Error";
 import Answer from "../components/Answer";
-import Axios from "axios";
 import NextQuestion from "../components/NextQuestion";
 
 export default function Home() {
 	const [questionNumber, setQuestionNumber] = useState(0);
 	const [selectedOption, setSelectedOption] = useState(null);
 	const [showError, setShowError] = useState(false);
-	const [data, setData] = useState({});
+	const [data, setData] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [showAnswer, setShowAnswer] = useState(false);
 
 	let content = null;
 
 	useEffect(() => {
-		Axios.get(config.SERVER_URL + questionNumber).then((res) => {
-			setData(res.data);
+		async function foo() {
+			const quizData = await api.getData();
+			setData(quizData);
 			setLoading(false);
-		});
-	}, [questionNumber]);
+		}
+		foo();
+	}, []);
 
 	function submitAnswer() {
 		if (selectedOption != null) {
@@ -50,20 +51,23 @@ export default function Home() {
 	}
 
 	if (loading) {
-		content = <div>Loading...</div>;
+		content = <div className="Loading">Loading...</div>;
 	} else {
 		content = (
-			<div>
+			<div className="content">
 				<Question question="What is the output ?" />
-				<Code code={data.code} />
+				<Code code={data[questionNumber].code} />
 				<Error visible={showError} />
 				<Options
 					setSelectedOption={setSelectedOption}
 					selectedOption={selectedOption}
-					options={data.options}
+					options={data[questionNumber].options}
 				/>
 				<Submit submitAnswer={submitAnswer} />
-				<Answer visible={showAnswer} answer={data.ans} />
+				<Answer
+					visible={showAnswer}
+					answer={data[questionNumber].ans}
+				/>
 				<NextQuestion goToNextQuestion={goToNextQuestion} />
 			</div>
 		);
