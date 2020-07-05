@@ -17,3 +17,9 @@ You will also see any lint errors in the console.
 ### Screenshot:
 
 <img src="./public/screenshots/js_quiz_app_ss.png" alt="drawing" width="300"/>
+
+---
+
+This repo uses [javascript-questions](https://github.com/lydiahallie/javascript-questions) to fetch and parse the quiz data.
+
+Credits [lydiahallie](https://github.com/lydiahallie).
