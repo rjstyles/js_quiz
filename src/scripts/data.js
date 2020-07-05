@@ -1,10 +1,10 @@
-const axios = require("axios");
+import axios from "axios";
 
-module.exports.getData = async () => {
+export default async function getData() {
 	const rawData = await getRawDataFromGithub();
 	const jsonData = processRawData(rawData);
 	return jsonData;
-};
+}
 
 const getJsonFromRaw = (raw) => {
 	let id,
